@@ -1,0 +1,34 @@
+# Python 3.10 on Windows.
+# After install, also run:  python -m spacy download en_core_web_sm
+
+# --- Web UI (app.py) ---
+flask
+pillow
+
+# --- Runtime (run_live_new.py) ---
+# TF 2.10.1 is the last Windows-native build and the last Keras-2 release,
+# which matters because the shipped .h5 models were saved with Keras 2.
+tensorflow==2.10.1
+numpy<2
+opencv-python
+mss
+keyboard
+selenium
+webdriver-manager
+google-cloud-vision
+spacy>=3.4,<3.8
+spacy-langdetect
+geopy
+
+# --- Training / evaluation (training_testing_models/*.py, data/visualize_*.py) ---
+matplotlib
+scikit-learn
+
+# --- Data scraping / preprocessing (data/*.py) ---
+# Only needed if you are rebuilding the image datasets from scratch.
+wget
+reverse_geocoder
+# basemap is used by data/data_gather.py only. pip install often fails on Windows;
+# install via conda if you actually need the scraper:
+#   conda install -c conda-forge basemap
+# basemap
